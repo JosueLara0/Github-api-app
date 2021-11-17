@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+// Libraries
+import React, { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+// Layouts
+import MainLayout from "./Layouts/MainLayout/MainLayout";
+
+// Components
+import Loader from "./Components/Custom/Loader";
+
+// Views
+import Repositories from "./Views/Repositories";
+import Followers from "./Views/Followers";
+const Home = lazy(() => import("./Views/Home"));
+const NotFound = lazy(() => import("./Views/NotFound"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <MainLayout>
+        <Switch>
+          <Route path="/" exact>
+            <Suspense fallback={<Loader />}>
+              <Home />
+            </Suspense>
+          </Route>
+
+          <Route path="/repositories/:user" exact>
+            <Repositories />
+          </Route>
+
+          <Route path="/followers/:user" exact>
+            <Followers />
+          </Route>
+
+          <Route path="*">
+            <Suspense fallback={<Loader />}>
+              <NotFound />
+            </Suspense>
+          </Route>
+        </Switch>
+      </MainLayout>
+    </Router>
   );
 }
 
