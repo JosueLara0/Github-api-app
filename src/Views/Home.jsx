@@ -55,6 +55,7 @@ const Home = () => {
             avatar={gitProfile.avatar_url}
             name={gitProfile.name}
             github_name={gitProfile.login}
+            bio={gitProfile.bio}
             public_repos={gitProfile.public_repos}
             followers={gitProfile.followers}
             following={gitProfile.following}

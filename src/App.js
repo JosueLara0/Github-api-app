@@ -25,11 +25,11 @@ function App() {
             </Suspense>
           </Route>
 
-          <Route path="/repositories/:user" exact>
+          <Route path="/repositories/:user/:amount" exact>
             <Repositories />
           </Route>
 
-          <Route path="/followers/:user" exact>
+          <Route path="/followers/:user/:amount" exact>
             <Followers />
           </Route>
 
