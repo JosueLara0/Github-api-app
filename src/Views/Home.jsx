@@ -15,7 +15,7 @@ const Home = () => {
   // Call the GitHub API when the page is loaded
   useEffect(() => {
     const handleFetchData = async () => {
-      const API = `https://api.github.com/users/danielmezam`;
+      const API = `https://api.github.com/users/JosueLara0`;
       const response = await fetch(API);
       const data = await response.json();
       setGitProfile(data);
